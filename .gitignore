@@ -9,9 +9,6 @@
 # production
 /build
 
-# config
-/config
-/scripts
 
 # misc
 .DS_Store
