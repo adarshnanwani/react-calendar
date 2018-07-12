@@ -1,28 +1,27 @@
 import React from 'react';
-import Appointment from './appointment';
+import Appointment from './appointment/appointment';
 
 const appointmentList = (props) => {
     
     const appointments = [];
-    for (let appointment in props.appointments) {
+    for (let appointment of props.appointments) {
         appointments.push(
             {
                 title: appointment.title,
-                amount: appointment.time
+                time: appointment.time
             }
         );
     }
     
-    appointments.map(app => {
-        return (<Appointment
-                    title={app.title}
-                    time={app.time}
-                    key={app.time}> </Appointment>);
+   const appointmentsOutput = appointments.map((appt,index) => {
+         return (<Appointment key={index} title={appt.title} time={appt.time} />);
     });
     
     
     return (
-        {appointments}
+        <ul>
+       {appointmentsOutput}
+        </ul>
         );
 }
 
