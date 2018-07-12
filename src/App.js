@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
-import Appointments from './components/Appointments/List';
+import Scheduler from './containers/AppointmentScheduler/Scheduler';
 
 class App extends Component {
 
   render() {
-      let apps = [{
-    title:"hsjsj",
-    time:"sadsas"
-  }];
+
     return (
       <div className="App">
-        <Appointments appointments={apps} />
+        <Scheduler />
       </div>
     );
   }
