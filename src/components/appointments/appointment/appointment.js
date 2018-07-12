@@ -2,7 +2,7 @@ import React from 'react';
 
 var appointment = (props) => {
     return (
-        <li> <span>{props.appointmentTitle}</span> - <span>{props.appointmentTime}</span> </li>
+        <li> <span>{props.title}</span> - <span>{props.time}</span> </li>
         );
 }
 
