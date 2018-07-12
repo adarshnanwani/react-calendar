@@ -1,5 +1,6 @@
 import React from 'react';
 import Appointment from './appointment/appointment';
+import classes from './list.css';
 
 const appointmentList = (props) => {
     
@@ -19,7 +20,7 @@ const appointmentList = (props) => {
     
     
     return (
-        <ul>
+        <ul className={classes.appointmentList}>
        {appointmentsOutput}
         </ul>
         );
