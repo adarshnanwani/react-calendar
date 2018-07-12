@@ -1,6 +1,6 @@
 import React from 'react';
-import Appointment from './appointment/appointment';
-import classes from './list.css';
+import Appointment from './Appointment/Appointment';
+import classes from './List.css';
 
 const appointmentList = (props) => {
     
