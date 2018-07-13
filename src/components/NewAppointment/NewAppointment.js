@@ -8,7 +8,7 @@ const newAppointment = (props) => {
     const header = (
         <Aux>
             <h1>React Calendar</h1>
-            <h2>Select date and time</h2>
+            <h2>Select date and time:</h2>
         </Aux>);
     return (
         <div className={classes.newAppointment}>

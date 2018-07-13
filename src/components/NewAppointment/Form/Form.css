@@ -1,0 +1,24 @@
+.form label{
+    display: inline-block;
+    font-weight: 600;
+}
+
+.form input{
+    display: inline-block;
+    margin: 5px;
+}
+
+.form button{
+    color: white;
+    border-radius: 2px;
+    padding: 5px;
+    font-weight: bold;
+    background: none;
+    border: 2px solid orange;
+    background-color: orange;
+    border-radius: 3px;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 20px;
+}

@@ -1,8 +1,9 @@
 import React from 'react';
+import classes from './Form.css';
 
 const form = (props) => {
     return (
-        <div>
+        <div className={classes.form}>
             <label>Appointment Title:</label>
             <input type="text" />
             <label>Selected Datetime:</label>
