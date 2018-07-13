@@ -7,6 +7,7 @@ const form = (props) => {
             <input type="text" />
             <label>Selected Datetime:</label>
             <input type="text" readOnly />
+            <button>Schedule Appointment</button>
         </div>
     );
 }
