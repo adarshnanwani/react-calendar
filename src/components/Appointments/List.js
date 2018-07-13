@@ -1,5 +1,4 @@
 import React from 'react';
-import Aux from '../../hoc/Auxiliary/Auxiliary';
 import Appointment from './Appointment/Appointment';
 import classes from './List.css';
 
@@ -21,12 +20,12 @@ const appointmentList = (props) => {
 
 
     return (
-        <Aux>
+        <div className={classes.appointmentList}>
             <h2>List of appointments:</h2>
-            <ul className={classes.appointmentList}>
+            <ul className={classes.appointmentListUl}>
                 {appointmentsOutput}
             </ul>
-        </Aux>
+        </div>
     );
 }
 
