@@ -1,11 +1,7 @@
 .form label{
-    display: inline-block;
-    font-weight: 600;
-}
-
-.form input{
-    display: inline-block;
-    margin: 5px;
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
 }
 
 .form button{

@@ -1,16 +1,27 @@
 import React from 'react';
+import classes from './Input.css';
 
 const input = (props) => {
-    let output;
-    switch (props.type) {
-        case 'text':
-            output = (<input type="text" />);
+    let inputElement = null;
+    const inputClasses = [classes.InputElement];
+
+    switch (props.inputType) {
+        case 'input':
+            inputElement = <input
+                className={inputClasses.join(' ')}
+                {...props.elementConfig}
+                value={props.value}
+                onChange={props.changed} />;
             break;
         default:
-            output = (<input type="text" />);
+            inputElement = <input
+                className={inputClasses.join(' ')}
+                {...props}
+                value={props.value}
+                onChange={props.changed} />;
             break;
     }
-    return output;
+    return inputElement;
 
 }
 
