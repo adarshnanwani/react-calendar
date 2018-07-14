@@ -6,8 +6,21 @@ import Appointments from '../../components/Appointments/List';
 
 class Scheduler extends Component {
 
-    render() {
+    state = {
+        formLoaded:false,
+        formLoading:false,
+        newAppointment:{
+            title:"",
+            time:""
+        },
+        submitting: false,
+        listLoading: false,
+        listLoaded: false,
+        error:false,
+        appointmentList:[]
+    };
 
+    render() {
         let apps = [{
             title: "hsjsj",
             time: "sadsas"

@@ -9,7 +9,7 @@ const form = (props) => {
             <label>Appointment Title:</label>
             <Input inputType="input" type="text" />
             <label>Selected Datetime:</label>
-            <Calendar/>
+            <Calendar />
             <button>Schedule Appointment</button>
         </div>
     );
