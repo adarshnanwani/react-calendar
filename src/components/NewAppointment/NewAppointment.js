@@ -1,6 +1,5 @@
 import React from 'react';
 import Aux from '../../hoc/Auxiliary/Auxiliary';
-import Calendar from './Calendar/Calendar';
 import Form from './Form/Form';
 import classes from './NewAppointment.css';
 
@@ -13,7 +12,6 @@ const newAppointment = (props) => {
     return (
         <div className={classes.newAppointment}>
             {header}
-            <Calendar />
             <Form />
         </div>
     );
