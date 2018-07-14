@@ -12,7 +12,7 @@ const newAppointment = (props) => {
     return (
         <div className={classes.newAppointment}>
             {header}
-            <Form />
+            <Form onClickHandler={props.onSubmit}/>
         </div>
     );
 }

@@ -6,11 +6,13 @@ import classes from './Form.css';
 const form = (props) => {
     return (
         <div className={classes.form}>
-            <label>Appointment Title:</label>
-            <Input inputType="input" type="text" />
-            <label>Selected Datetime:</label>
-            <Calendar />
-            <button>Schedule Appointment</button>
+            <form>
+                <label>Appointment Title:</label>
+                <Input inputType="input" type="text" />
+                <label>Selected Datetime:</label>
+                <Calendar />
+                <button onClick={props.onClickHandler}>Schedule Appointment</button>
+            </form>
         </div>
     );
 }
