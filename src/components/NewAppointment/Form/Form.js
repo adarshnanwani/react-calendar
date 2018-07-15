@@ -11,6 +11,7 @@ const form = (props) => {
                 <Input inputType="input" type="text" changed={(event)=>props.titleChanged(event)} value={props.title} />
                 <label>Select date and time:</label>
                 <Calendar onChange={(event)=> props.dateTimeChanged(event)} className={classes.dateTime}/>
+                <label className={classes.selectionLabel}>Current Selection:</label><span >{props.selectedDateTime?props.selectedDateTime:"Please select a date"}</span>
                 <button onClick={props.onClickHandler}>Schedule Appointment</button>
             </form>
         </div>

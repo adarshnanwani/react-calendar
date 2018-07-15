@@ -15,6 +15,7 @@ const newAppointment = (props) => {
             <Form 
             titleChanged={props.titleChanged}
             title={props.title}
+            selectedDateTime={props.selectedDateTime}
             dateTimeChanged={props.dateTimeChanged}
             onClickHandler={props.onSubmit}/>
         </div>

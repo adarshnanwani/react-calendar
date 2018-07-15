@@ -23,3 +23,8 @@
 .dateTime input{
     display: none;
 }
+
+.form .selectionLabel{
+    display: inline;
+    margin: 20px 10px;
+}

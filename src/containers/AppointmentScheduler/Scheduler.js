@@ -77,7 +77,8 @@ class Scheduler extends Component {
                 onSubmit={this.appointmentHandler}
                 titleChanged={this.titleChangedHandler}
                 title={this.state.appointmentForm.title}
-                dateTimeChanged={this.dateTimeChangedHandler} />
+                dateTimeChanged={this.dateTimeChangedHandler}
+                selectedDateTime={this.state.appointmentForm.datetime} />
             <Appointments appointments={apps} />
         </Aux>);
     }
