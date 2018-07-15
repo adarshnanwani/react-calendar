@@ -3,6 +3,7 @@ import Aux from '../../hoc/Auxiliary/Auxiliary';
 import NewAppointment from '../../components/NewAppointment/NewAppointment';
 import Appointments from '../../components/Appointments/List';
 import moment from 'moment';
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import axios from '../../axios-scheduler';
 
 class Scheduler extends Component {
@@ -96,4 +97,4 @@ class Scheduler extends Component {
     }
 }
 
-export default Scheduler;
+export default withErrorHandler(Scheduler, axios);

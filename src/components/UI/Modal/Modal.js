@@ -3,12 +3,16 @@ import Aux from '../../../hoc/Auxiliary/Auxiliary';
 import Backdrop from '../Backdrop/Backdrop';
 import classes from './Modal.css';
 
-class Modal extends Component() {
-
+class Modal extends Component {
+    
+    shouldComponentUpdate(nextProps, nextState) {
+        return (nextProps.show !== this.props.show) || (nextProps.children !== this.props.children);
+    }
+    
     render() {
         return (
             <Aux>
-                <Backdrop />
+                <Backdrop show={this.props.show} clicked={this.props.modalClosed} />
                 <div
                     className={classes.Modal}
                     style={{
