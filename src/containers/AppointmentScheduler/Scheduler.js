@@ -74,11 +74,12 @@ class Scheduler extends Component {
 
         return (<Aux>
             <NewAppointment
-                onSubmit={this.appointmentHandler}
-                titleChanged={this.titleChangedHandler}
-                title={this.state.appointmentForm.title}
-                dateTimeChanged={this.dateTimeChangedHandler}
-                selectedDateTime={this.state.appointmentForm.datetime} />
+            onSubmit={this.appointmentHandler}
+            submitting={this.state.submitting}
+            titleChanged={this.titleChangedHandler}
+            title={this.state.appointmentForm.title}
+            dateTimeChanged={this.dateTimeChangedHandler}
+            selectedDateTime={this.state.appointmentForm.datetime} />;
             <Appointments appointments={apps} />
         </Aux>);
     }
