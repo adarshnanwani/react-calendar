@@ -19,3 +19,7 @@
     margin-top: 20px;
     cursor: pointer;
 }
+
+.dateTime input{
+    display: none;
+}

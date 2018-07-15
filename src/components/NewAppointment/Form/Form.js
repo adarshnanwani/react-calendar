@@ -1,6 +1,6 @@
 import React from 'react';
 import Input from '../../UI/Input/Input';
-import Calendar from '../Calendar/Calendar';
+import Calendar from 'react-datetime';
 import classes from './Form.css';
 
 const form = (props) => {
@@ -10,7 +10,7 @@ const form = (props) => {
                 <label>Appointment Title:</label>
                 <Input inputType="input" type="text" changed={(event)=>props.titleChanged(event)} value={props.title} />
                 <label>Select date and time:</label>
-                <Calendar />
+                <Calendar onChange={(event)=> props.dateTimeChanged(event)} className={classes.dateTime}/>
                 <button onClick={props.onClickHandler}>Schedule Appointment</button>
             </form>
         </div>

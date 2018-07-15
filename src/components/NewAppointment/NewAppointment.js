@@ -16,7 +16,6 @@ const newAppointment = (props) => {
             titleChanged={props.titleChanged}
             title={props.title}
             dateTimeChanged={props.dateTimeChanged}
-            dateTime={props.dateTime}
             onClickHandler={props.onSubmit}/>
         </div>
     );

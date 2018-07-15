@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Aux from '../../hoc/Auxiliary/Auxiliary';
 import NewAppointment from '../../components/NewAppointment/NewAppointment';
 import Appointments from '../../components/Appointments/List';
+import moment from 'moment';
 import axios from '../../axios-scheduler';
 
 class Scheduler extends Component {
@@ -20,12 +21,23 @@ class Scheduler extends Component {
         appointmentList: []
     };
 
-    titleChangedHandler = (event)=>{
+    titleChangedHandler = (event) => {
         const updatedAppointmentForm = {
             ...this.state.appointmentForm
         };
 
         updatedAppointmentForm.title = event.target.value;
+        this.setState({
+            appointmentForm: updatedAppointmentForm
+        });
+    }
+
+    dateTimeChangedHandler = (event) => {
+        const updatedAppointmentForm = {
+            ...this.state.appointmentForm
+        };
+        updatedAppointmentForm.datetime = moment(event).format('MMMM Do YYYY, h:mm:ss a');
+
         this.setState({
             appointmentForm: updatedAppointmentForm
         });
@@ -61,12 +73,11 @@ class Scheduler extends Component {
         }];
 
         return (<Aux>
-            <NewAppointment 
-            onSubmit={this.appointmentHandler}
-            titleChanged={this.titleChangedHandler}
-            title={this.state.appointmentForm.title}
-            dateTimeChanged={this.dateTimeChangedHandler}
-            dateTime={this.state.appointmentForm.datetime} />
+            <NewAppointment
+                onSubmit={this.appointmentHandler}
+                titleChanged={this.titleChangedHandler}
+                title={this.state.appointmentForm.title}
+                dateTimeChanged={this.dateTimeChangedHandler} />
             <Appointments appointments={apps} />
         </Aux>);
     }
