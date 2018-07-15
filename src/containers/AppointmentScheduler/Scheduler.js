@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Aux from '../../hoc/Auxiliary/Auxiliary';
-import NewAppointment from '../../components/NewAppointment/NewAppointment';
+import NewAppointment from './NewAppointment/NewAppointment';
 import Appointments from '../../components/Appointments/List';
 import moment from 'moment';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
@@ -9,11 +9,30 @@ import axios from '../../axios-scheduler';
 class Scheduler extends Component {
 
     state = {
-        formLoaded: false,
-        formLoading: false,
-        appointmentForm: {
+         appointmentForm: {
             title: "",
             datetime: ""
+        },
+        appointmentFormNew: {
+            title: {
+                elementType : 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder:'Enter appointment title'
+                },
+                value:'',
+                validation:{
+                    required: true
+                },
+                valid:false
+            },
+            datetime: {
+                value:'',
+                validation:{
+                    required:true
+                },
+                valid:false
+            }
         },
         submitting: false,
         listLoading: false,
@@ -71,11 +90,15 @@ class Scheduler extends Component {
 
     resetForm = () => {
         this.setState({
-            appointmentForm:{
-                title:"",
-                datetime:""
+            appointmentForm: {
+                title: "",
+                datetime: ""
             }
         })
+    };
+
+    validateForm = ()=>{
+
     }
 
     render() {
