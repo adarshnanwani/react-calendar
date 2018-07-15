@@ -8,8 +8,8 @@ const form = (props) => {
         <div className={classes.form}>
             <form>
                 <label>Appointment Title:</label>
-                <Input inputType="input" type="text" />
-                <label>Selected Datetime:</label>
+                <Input inputType="input" type="text" changed={(event)=>props.titleChanged(event)} value={props.title} />
+                <label>Select date and time:</label>
                 <Calendar />
                 <button onClick={props.onClickHandler}>Schedule Appointment</button>
             </form>

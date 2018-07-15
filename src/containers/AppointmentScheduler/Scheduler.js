@@ -20,6 +20,17 @@ class Scheduler extends Component {
         appointmentList: []
     };
 
+    titleChangedHandler = (event)=>{
+        const updatedAppointmentForm = {
+            ...this.state.appointmentForm
+        };
+
+        updatedAppointmentForm.title = event.target.value;
+        this.setState({
+            appointmentForm: updatedAppointmentForm
+        });
+    }
+
     appointmentHandler = (event) => {
         event.preventDefault();
         const appointment = {
@@ -50,7 +61,12 @@ class Scheduler extends Component {
         }];
 
         return (<Aux>
-            <NewAppointment onSubmit={this.appointmentHandler} />
+            <NewAppointment 
+            onSubmit={this.appointmentHandler}
+            titleChanged={this.titleChangedHandler}
+            title={this.state.appointmentForm.title}
+            dateTimeChanged={this.dateTimeChangedHandler}
+            dateTime={this.state.appointmentForm.datetime} />
             <Appointments appointments={apps} />
         </Aux>);
     }

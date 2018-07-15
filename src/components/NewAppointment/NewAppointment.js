@@ -6,13 +6,18 @@ import classes from './NewAppointment.css';
 const newAppointment = (props) => {
     const header = (
         <Aux>
-            <h1>React Calendar</h1>
-            <h2>Select date and time:</h2>
+            <h2>React Scheduler</h2>
+            <h3>Schedule an appointment:</h3>
         </Aux>);
     return (
         <div className={classes.newAppointment}>
             {header}
-            <Form onClickHandler={props.onSubmit}/>
+            <Form 
+            titleChanged={props.titleChanged}
+            title={props.title}
+            dateTimeChanged={props.dateTimeChanged}
+            dateTime={props.dateTime}
+            onClickHandler={props.onSubmit}/>
         </div>
     );
 }
