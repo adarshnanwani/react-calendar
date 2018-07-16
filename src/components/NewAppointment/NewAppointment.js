@@ -1,21 +1,22 @@
+//Dependencies
 import React, { Component } from 'react';
 import Calendar from 'react-datetime';
-
+//Hoc
 import Aux from '../../hoc/Auxiliary/Auxiliary';
-
+//UI Component imports
 import Spinner from '../UI/Spinner/Spinner';
 import Input from '../UI/Input/Input';
-
+//Local style imports
 import classes from './NewAppointment.css';
 
-const newAppointment =(props) => {
+const newAppointment = (props) => {
 
-const { titleChanged, dateTimeChanged, dateTimeModel, onSubmit, submitting, titleModel } = props;
+    const { titleChanged, dateTimeChanged, dateTimeModel, onSubmit, submitting, titleModel } = props;
 
-const { form, dateTime, currentSelection, selectionLabel} = classes;
-        let submitBtn = (titleModel.valid && dateTimeModel.valid)?<button onClick={onSubmit} >Schedule Appointment</button>:null;
-        let newAppointmentSection = (
-            <Aux>
+    const { form, dateTime, currentSelection, selectionLabel } = classes;
+    let submitBtn = (titleModel.valid && dateTimeModel.valid) ? <button onClick={onSubmit} >Schedule Appointment</button> : null;
+    let newAppointmentSection = (
+        <Aux>
                 <h3>Schedule an appointment:</h3>
                 <div className={form}>
                     <form>
@@ -36,18 +37,17 @@ const { form, dateTime, currentSelection, selectionLabel} = classes;
                         {submitBtn}
                     </form>
                 </div>
-            </Aux>
-        );
+            </Aux>);
 
-        if (submitting) {
-            newAppointmentSection = <Spinner />
-        }
-        return (
-            <div className={classes.newAppointment}>
+    if (submitting) {
+        newAppointmentSection = <Spinner />
+    }
+    return (
+        <div className={classes.newAppointment}>
                 <h2>React Scheduler</h2>
                 {newAppointmentSection}
             </div>
-        );
+    );
 }
 
 export default newAppointment;

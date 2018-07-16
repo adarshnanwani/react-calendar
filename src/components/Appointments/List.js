@@ -1,17 +1,21 @@
+//Dependencies
 import React from 'react';
+//Local Component imports
 import Appointment from './Appointment/Appointment';
+//Local style imports
 import classes from './List.css';
 
 const appointmentList = (props) => {
 
+    const { AppointmentList, AppointmentListUl } = classes;
+
     const appointments = [];
+
     for (let appointment of props.appointments) {
-        appointments.push(
-            {
-                title: appointment.title,
-                time: appointment.time
-            }
-        );
+        appointments.push({
+            title: appointment.title,
+            time: appointment.time
+        });
     }
 
     const appointmentsOutput = appointments.map((appt, index) => {
@@ -20,9 +24,9 @@ const appointmentList = (props) => {
 
 
     return (
-        <div className={classes.appointmentList}>
+        <div className={AppointmentList}>
             <h2>List of appointments:</h2>
-            <ul className={classes.appointmentListUl}>
+            <ul className={AppointmentListUl}>
                 {appointmentsOutput}
             </ul>
         </div>

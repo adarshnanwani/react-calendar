@@ -1,10 +1,11 @@
+//Dependencies
 import React, { Component } from 'react';
 import moment from 'moment';
-
+//HOC
 import Aux from '../../hoc/Auxiliary/Auxiliary';
 import axios from '../../axios-scheduler';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
-
+//Local Component imports
 import NewAppointment from '../../components/NewAppointment/NewAppointment';
 import Appointments from '../../components/Appointments/List';
 
