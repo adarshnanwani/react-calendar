@@ -5,7 +5,7 @@ const input = (props) => {
     let inputElement = null;
     const inputClasses = [classes.InputElement];
 
-    switch (props.inputType) {
+    switch (props.elementType) {
         case 'input':
             inputElement = <input
                 className={inputClasses.join(' ')}
@@ -16,7 +16,7 @@ const input = (props) => {
         default:
             inputElement = <input
                 className={inputClasses.join(' ')}
-                {...props}
+                {...props.elementConfig}
                 value={props.value}
                 onChange={props.changed} />;
             break;

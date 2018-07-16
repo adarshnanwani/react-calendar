@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import Aux from '../../hoc/Auxiliary/Auxiliary';
-import NewAppointment from './NewAppointment/NewAppointment';
-import Appointments from '../../components/Appointments/List';
 import moment from 'moment';
-import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
+
+import Aux from '../../hoc/Auxiliary/Auxiliary';
 import axios from '../../axios-scheduler';
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
+
+import NewAppointment from '../../components/NewAppointment/NewAppointment';
+import Appointments from '../../components/Appointments/List';
+
+
 
 class Scheduler extends Component {
 
@@ -114,7 +118,7 @@ class Scheduler extends Component {
                 titleChanged={this.titleChangedHandler}
                 title={this.state.appointmentForm.title}
                 dateTimeChanged={this.dateTimeChangedHandler}
-                selectedDateTime={this.state.appointmentForm.datetime} />;
+                selectedDateTime={this.state.appointmentForm.datetime} />
             <Appointments appointments={apps} />
         </Aux>);
     }
