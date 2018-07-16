@@ -1,5 +1,5 @@
 //Dependencies
-import React, { Component } from 'react';
+import React from 'react';
 import Calendar from 'react-datetime';
 //Hoc
 import Aux from '../../hoc/Auxiliary/Auxiliary';

@@ -1,6 +1,7 @@
 //Dependencies
 import React, { Component } from 'react';
 import moment from 'moment';
+import _ from 'lodash';
 //HOC
 import Aux from '../../hoc/Auxiliary/Auxiliary';
 import axios from '../../axios-scheduler';
@@ -8,7 +9,8 @@ import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 //Local Component imports
 import NewAppointment from '../../components/NewAppointment/NewAppointment';
 import Appointments from '../../components/Appointments/List';
-
+//Config imports
+import { defaultFormModel } from './SchedulerConfig.js';
 
 
 class Scheduler extends Component {
@@ -18,27 +20,7 @@ class Scheduler extends Component {
             title: "",
             datetime: ""
         },
-        appointmentForm: {
-            title: {
-                elementType: 'input',
-                config: {
-                    type: 'text',
-                    placeholder: 'Enter appointment title'
-                },
-                value: '',
-                validation: {
-                    required: true
-                },
-                valid: false
-            },
-            datetime: {
-                value: null,
-                validation: {
-                    required: true
-                },
-                valid: false
-            }
-        },
+        appointmentForm: _.cloneDeep(defaultFormModel),
         submitting: false,
         listLoading: false,
         listLoaded: false,
@@ -96,11 +78,9 @@ class Scheduler extends Component {
     }
 
     resetForm = () => {
+        const model = _.cloneDeep(defaultFormModel);
         this.setState({
-            appointmentForm: {
-                title: "",
-                datetime: ""
-            }
+            appointmentForm: model
         })
     };
 
