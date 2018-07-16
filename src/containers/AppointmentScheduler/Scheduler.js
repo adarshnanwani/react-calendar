@@ -13,29 +13,29 @@ import Appointments from '../../components/Appointments/List';
 class Scheduler extends Component {
 
     state = {
-         appointmentForm: {
+        appointmentFormNew: {
             title: "",
             datetime: ""
         },
-        appointmentFormNew: {
+        appointmentForm: {
             title: {
-                elementType : 'input',
-                elementConfig: {
+                elementType: 'input',
+                config: {
                     type: 'text',
-                    placeholder:'Enter appointment title'
+                    placeholder: 'Enter appointment title'
                 },
-                value:'',
-                validation:{
+                value: '',
+                validation: {
                     required: true
                 },
-                valid:false
+                valid: false
             },
             datetime: {
-                value:'',
-                validation:{
-                    required:true
+                value: null,
+                validation: {
+                    required: true
                 },
-                valid:false
+                valid: false
             }
         },
         submitting: false,
@@ -50,7 +50,8 @@ class Scheduler extends Component {
             ...this.state.appointmentForm
         };
 
-        updatedAppointmentForm.title = event.target.value;
+        updatedAppointmentForm.title.value = event.target.value;
+        updatedAppointmentForm.title.valid = this.validateField(updatedAppointmentForm.title.value, updatedAppointmentForm.title.validation)
         this.setState({
             appointmentForm: updatedAppointmentForm
         });
@@ -60,7 +61,8 @@ class Scheduler extends Component {
         const updatedAppointmentForm = {
             ...this.state.appointmentForm
         };
-        updatedAppointmentForm.datetime = moment(event).format('MMMM Do YYYY, h:mm:ss a');
+        updatedAppointmentForm.datetime.value = moment(event).format('MMMM Do YYYY, h:mm:ss a');
+        updatedAppointmentForm.datetime.valid = this.validateField(updatedAppointmentForm.datetime.value, updatedAppointmentForm.datetime.validation)
 
         this.setState({
             appointmentForm: updatedAppointmentForm
@@ -101,9 +103,16 @@ class Scheduler extends Component {
         })
     };
 
-    validateForm = ()=>{
+    validateField = (value, rules) => {
+        let isValid = true;
 
+        if (rules.required) {
+            isValid = value.trim() !== '' && isValid;
+        }
+
+        return isValid;
     }
+
 
     render() {
         let apps = [{
@@ -116,9 +125,9 @@ class Scheduler extends Component {
                 onSubmit={this.appointmentHandler}
                 submitting={this.state.submitting}
                 titleChanged={this.titleChangedHandler}
-                title={this.state.appointmentForm.title}
+                titleModel={this.state.appointmentForm.title}
                 dateTimeChanged={this.dateTimeChangedHandler}
-                selectedDateTime={this.state.appointmentForm.datetime} />
+                dateTimeModel={this.state.appointmentForm.datetime} />
             <Appointments appointments={apps} />
         </Aux>);
     }

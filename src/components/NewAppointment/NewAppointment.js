@@ -10,27 +10,30 @@ import classes from './NewAppointment.css';
 
 const newAppointment =(props) => {
 
-const { titleChanged, dateTimeChanged, selectedDateTime, onSubmit, submitting } = props;
+const { titleChanged, dateTimeChanged, dateTimeModel, onSubmit, submitting, titleModel } = props;
+
+const { form, dateTime, currentSelection, selectionLabel} = classes;
+        let submitBtn = (titleModel.valid && dateTimeModel.valid)?<button onClick={onSubmit} >Schedule Appointment</button>:null;
         let newAppointmentSection = (
             <Aux>
                 <h3>Schedule an appointment:</h3>
-                <div className={classes.form}>
+                <div className={form}>
                     <form>
                         <label>Appointment Title:</label>
                         <Input
                             elementType="input"
-                            type="text"
+                            elementConfig={titleModel.config}
                             changed={(event) => titleChanged(event)}
-                            value={props.title} />
+                            value={titleModel.value} />
                         <label>Select date and time:</label>
                         <Calendar
                             onChange={(event) => dateTimeChanged(event)}
-                            className={classes.dateTime} />
-                        <section className={classes.currentSelection}>
-                            <label className={classes.selectionLabel}>Current Selection:</label>
-                            <span>{selectedDateTime ? selectedDateTime : "Please select a date"}</span>
+                            className={dateTime} />
+                        <section className={currentSelection}>
+                            <label className={selectionLabel}>Current Selection:</label>
+                            <span>{dateTimeModel.value ? dateTimeModel.value : "Please select a date"}</span>
                         </section>
-                        <button onClick={onSubmit}>Schedule Appointment</button>
+                        {submitBtn}
                     </form>
                 </div>
             </Aux>
