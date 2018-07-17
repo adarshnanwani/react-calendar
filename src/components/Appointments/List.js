@@ -1,36 +1,34 @@
 //Dependencies
 import React from 'react';
+//UI Component imports
+import Spinner from '../UI/Spinner/Spinner';
 //Local Component imports
 import Appointment from './Appointment/Appointment';
 //Local style imports
 import classes from './List.css';
 
-const appointmentList = (props) => {
+const list = (props) => {
 
     const { AppointmentList, AppointmentListUl } = classes;
 
-    const appointments = [];
-
-    for (let appointment of props.appointments) {
-        appointments.push({
-            title: appointment.title,
-            time: appointment.time
-        });
+    let appointments = props.appointments.map(appt => (
+        <Appointment 
+                 key={appt.id} 
+                 title={appt.title} 
+                 datetime={appt.datetime} />
+    ));
+    if (props.loading) {
+        appointments = <Spinner />;
     }
-
-    const appointmentsOutput = appointments.map((appt, index) => {
-        return (<Appointment key={index} title={appt.title} time={appt.time} />);
-    });
-
-
     return (
         <div className={AppointmentList}>
             <h2>List of appointments:</h2>
             <ul className={AppointmentListUl}>
-                {appointmentsOutput}
+                {appointments}
             </ul>
         </div>
     );
+
 }
 
-export default appointmentList;
+export default list;

@@ -22,11 +22,14 @@ class Scheduler extends Component {
         },
         appointmentForm: _.cloneDeep(defaultFormModel),
         submitting: false,
-        listLoading: false,
-        listLoaded: false,
+        loadingList: true,
         error: false,
-        appointmentList: []
+        appointments: []
     };
+
+    componentDidMount() {
+        this.fetchAppointments();
+    }
 
     titleChangedHandler = (event) => {
         const updatedAppointmentForm = {
@@ -55,8 +58,8 @@ class Scheduler extends Component {
     appointmentHandler = (event) => {
         event.preventDefault();
         const appointment = {
-            title: this.state.appointmentForm.title,
-            datetime: this.state.appointmentForm.datetime
+            title: this.state.appointmentForm.title.value,
+            datetime: this.state.appointmentForm.datetime.value
         };
         this.setState({
             submitting: true
@@ -68,6 +71,7 @@ class Scheduler extends Component {
                     submitting: false
                 });
                 this.resetForm();
+                this.fetchAppointments();
             })
             .catch(error => {
                 this.setState({
@@ -77,11 +81,36 @@ class Scheduler extends Component {
             });
     }
 
+    fetchAppointments = () => {
+        this.setState({
+            loadingList: true
+        });
+        axios.get('/appointments.json')
+            .then(res => {
+                const fetchedAppointments = [];
+                for (let key in res.data) {
+                    fetchedAppointments.push({
+                        ...res.data[key],
+                        id: key
+                    });
+                }
+                this.setState({
+                    loadingList: false,
+                    appointments: fetchedAppointments
+                });
+            })
+            .catch(err => {
+                this.setState({
+                    loadingList: false
+                });
+            });
+    }
+
     resetForm = () => {
         const model = _.cloneDeep(defaultFormModel);
         this.setState({
             appointmentForm: model
-        })
+        });
     };
 
     validateField = (value, rules) => {
@@ -96,11 +125,6 @@ class Scheduler extends Component {
 
 
     render() {
-        let apps = [{
-            title: "hsjsj",
-            time: "sadsas"
-        }];
-
         return (<Aux>
             <NewAppointment
                 onSubmit={this.appointmentHandler}
@@ -109,7 +133,7 @@ class Scheduler extends Component {
                 titleModel={this.state.appointmentForm.title}
                 dateTimeChanged={this.dateTimeChangedHandler}
                 dateTimeModel={this.state.appointmentForm.datetime} />
-            <Appointments appointments={apps} />
+           <Appointments appointments={this.state.appointments} loading={this.state.loadingList}/>
         </Aux>);
     }
 }
