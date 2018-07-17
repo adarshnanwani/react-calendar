@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import _ from 'lodash';
+import { detect } from 'detect-browser';
 //HOC
 import Aux from '../../hoc/Auxiliary/Auxiliary';
 import axios from '../../axios-scheduler';
@@ -57,9 +58,14 @@ class Scheduler extends Component {
 
     appointmentHandler = (event) => {
         event.preventDefault();
+        const browser = detect();
+        const systemDetails = browser.name.toUpperCase() + " on " + browser.os;
+        const createdDatetime = moment().format('MMMM Do YYYY, h:mm:ss a');
         const appointment = {
             title: this.state.appointmentForm.title.value,
-            datetime: this.state.appointmentForm.datetime.value
+            datetime: this.state.appointmentForm.datetime.value,
+            systemDetails: systemDetails,
+            createdDatetime: createdDatetime
         };
         this.setState({
             submitting: true
@@ -133,7 +139,7 @@ class Scheduler extends Component {
                 titleModel={this.state.appointmentForm.title}
                 dateTimeChanged={this.dateTimeChangedHandler}
                 dateTimeModel={this.state.appointmentForm.datetime} />
-           <Appointments appointments={this.state.appointments} loading={this.state.loadingList}/>
+            <Appointments appointments={this.state.appointments} loading={this.state.loadingList} />
         </Aux>);
     }
 }
